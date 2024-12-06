@@ -1,22 +1,18 @@
-from langchain_openai import ChatOpenAI
-# from langchain_openai import OpenAIEmbeddings
-from langchain_core.messages import HumanMessage
-from langchain_core.messages import AIMessage
-
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import START, MessagesState, StateGraph
-import getpass
 import os
-
+import getpass
 from typing import Sequence
-
-from langchain_core.messages import BaseMessage
-from langgraph.graph.message import add_messages
 from typing_extensions import Annotated, TypedDict
 
-from langchain_core.messages import SystemMessage, trim_messages
-
+# LangChain imports
+from langchain_openai import ChatOpenAI
+# from langchain_openai import OpenAIEmbeddings
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage, SystemMessage, trim_messages
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+
+# LangGraph imports
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.graph import START, MessagesState, StateGraph
+from langgraph.graph.message import add_messages
 
 
 class State(TypedDict):
@@ -29,7 +25,8 @@ class ChatApp:
         os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
         os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
-        self.model = ChatOpenAI(model="gpt-4o-mini", max_tokens=50)
+        self.model = ChatOpenAI(model="gpt-4o-mini", max_tokens=1000)
+        
 
         self.prompt_template = ChatPromptTemplate.from_messages(
             [
@@ -42,7 +39,7 @@ class ChatApp:
         )
 
         self.trimmer = trim_messages(
-            max_tokens=65,
+            max_tokens=50,
             strategy="last",
             token_counter=self.model,
             include_system=True,
