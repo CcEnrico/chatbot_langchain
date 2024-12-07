@@ -11,6 +11,7 @@ from langchain import hub
 from langgraph.graph import START, StateGraph
 from typing_extensions import List, TypedDict
 from langchain_core.documents import Document
+from langgraph.checkpoint.memory import MemorySaver
 
 class State(TypedDict):
     question: str
@@ -24,32 +25,53 @@ def retrieve(state: State):
     return {"context": [Document(page_content=doc) for doc in retrieved_docs]}
 
 def generate(state: State):
+    # Combine retrieved document content into a single string
     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
-    prompt = hub.pull("rlm/rag-prompt")
     
-    messages = prompt.invoke({"question": state["question"], "context": docs_content})
-    
-    # Serializza i messaggi
-    if isinstance(messages, list):
-        serialized_messages = [
-            message.to_dict() if hasattr(message, "to_dict") else str(message) for message in messages
-        ]
-    else:
-        serialized_messages = messages.to_dict() if hasattr(messages, "to_dict") else str(messages)
+    # Create the message structure for the LLM
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a helpful assistant specialized in embedded systems. Provide detailed, thorough, and "
+                "well-structured answers in Italian, including examples, explanations, and step-by-step guidance."
+            )
+        },
+        {
+            "role": "assistant",
+            "content": f"Ecco alcune informazioni di contesto utili:\n\n{docs_content}"
+        },
+        {
+            "role": "user",
+            "content": state["question"]
+        }
+    ]
 
-    response = requests.post('http://localhost:5003/invoke', json={"messages": serialized_messages})
-    return {"answer": response.json()["response"]}
+    # Send the messages to the /invoke endpoint of the LLM server
+    response = requests.post('http://localhost:5003/invoke', json={"messages": messages})
+    
+    # Return the assistant's response
+    return {"answer": response.json().get("response", "No response from server.")}
+
 
 def main():
 
     graph_builder = StateGraph(State).add_sequence([retrieve, generate])
     graph_builder.add_edge(START, "retrieve")
-    graph = graph_builder.compile()
 
-    # Execute the query on the LLM
-    question = "You are a helpful assistant. Answer all questions to the best of your ability in Italian. raccontami Nabucodo'nosor"
-    response = graph.invoke({"question": question})
-    print(response["answer"])
+    # Add memory
+    memory = MemorySaver()
+    graph = graph_builder.compile(checkpointer=memory)
+
+    config = {"configurable": {"thread_id": "chat1"}}
+
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["exit", "quit"]:
+            print("Exiting chat...")
+            break
+        response = graph.invoke({"question": user_input}, config)
+        print(f"AI: {response['answer']}")
 
 if __name__ == "__main__":
     main()
