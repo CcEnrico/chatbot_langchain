@@ -3,15 +3,9 @@ from flask import Flask, request, jsonify
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 import os
 
-# Variabili d'ambiente
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+
 
 # Inizializza il modello di embedding
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
@@ -29,38 +23,6 @@ app = Flask(__name__)
 logging.basicConfig(filename='server.log', level=logging.INFO, 
                     format='%(asctime)s %(levelname)s %(message)s')
 
-# Configurazione del modello di linguaggio
-llm = ChatOpenAI(model="gpt-4o-mini", max_tokens=500, temperature=0.6, frequency_penalty=0.4)
-
-# Template del prompt con istruzioni dettagliate per la risposta
-# prompt_template = ChatPromptTemplate.from_messages(
-#     [
-#         (
-#             "system",
-#             "You are a helpful assistant. Provide thorough, detailed, and elaborate answers to all questions in Italian.",
-#         ),
-#         MessagesPlaceholder(variable_name="messages"),
-#     ]
-# )
-
-@app.route('/invoke', methods=['POST'])
-def invoke():
-    # Estrai i messaggi dell'utente dalla richiesta
-    messages = request.json.get('messages', [])
-    
-    # Controlla se sono stati forniti messaggi
-    if not messages:
-        return jsonify({"error": "No messages provided"}), 400
-    
-    # Ottieni la risposta dal modello di linguaggio
-    response = llm.invoke(messages)
-    
-    # Stampa informazioni sull'operazione
-    print(f"Invoked LLM with messages: {messages}")
-    print(f"Response: {response.content}")
-    
-    # Restituisci la risposta come JSON
-    return jsonify({"response": response.content})
 
 @app.route('/add_document', methods=['POST'])
 def add_documents():

@@ -37,7 +37,7 @@ print(f"Loaded {len(docs)} chunks of text")
 
 # Configurare il text splitter
 chunk_size = 700
-chunk_overlap = 70
+chunk_overlap = 50
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 
 # Suddividere i documenti
