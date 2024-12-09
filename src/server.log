@@ -1,0 +1,302 @@
+2024-12-08 23:14:04,566 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.70:5001
+2024-12-08 23:14:04,566 INFO [33mPress CTRL+C to quit[0m
+2024-12-08 23:18:56,925 INFO Size of the FAISS file: 52.82 MB
+2024-12-08 23:18:56,925 INFO Number of vectors: 18028
+2024-12-08 23:18:56,925 INFO Dimension of vectors: 768
+2024-12-08 23:18:56,925 INFO Metric type: 1
+2024-12-08 23:18:56,926 INFO 127.0.0.1 - - [08/Dec/2024 23:18:56] "POST /load_vector_store HTTP/1.1" 200 -
+2024-12-08 23:20:31,427 INFO Performed similarity search with query: ['Raccontami la concezzione di Gesu bambino']
+2024-12-08 23:20:31,428 INFO Results: ['NELLE ESEQUIE\nDI UN BAMBINO\nNON ANCORA\nBATTEZZATO', 'bino, pensavo da bambino, ragionavo da bambino. Divenuto\nuomo, ho eliminato ciò che è da bambino.\nPER L’INIZIAZIONE CRISTIANA\n150\nF\n2.', '[76]E tu, bambino, sarai chiamato profeta dell\'Altissimo\n\tperché andrai \'innanzi al Signore a preparargli le strade,\'\n\t[77]per dare al suo popolo la conoscenza della salvezza\n\tnella remissione dei suoi peccati,\n\t[78]grazie alla bonta\' misericordiosa del nostro Dio,\n\tper cui verra\' a visitarci dall\'alto un sole che sorge\n\t[79]\'per rischiarare quelli che stanno nelle tenebre\'\n\t\'e nell\'ombra della morte\'\n\te dirigere i nostri passi sulla via della pace".', 'NELLE ESEQUIE\nDI UN BAMBINO\nBATTEZZATO']
+2024-12-08 23:20:31,428 INFO 127.0.0.1 - - [08/Dec/2024 23:20:31] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-08 23:20:41,297 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-08 23:20:41,322 INFO 127.0.0.1 - - [08/Dec/2024 23:20:41] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:13:11,565 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.70:5001
+2024-12-09 00:13:11,565 INFO [33mPress CTRL+C to quit[0m
+2024-12-09 00:13:21,135 INFO Performed similarity search with query: ['ciao']
+2024-12-09 00:13:21,135 INFO Results: ['']
+2024-12-09 00:13:21,136 INFO 127.0.0.1 - - [09/Dec/2024 00:13:21] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:13:22,230 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:13:22,247 INFO 127.0.0.1 - - [09/Dec/2024 00:13:22] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:20:00,577 INFO Performed similarity search with query: ['iao']
+2024-12-09 00:20:00,577 INFO Results: ['']
+2024-12-09 00:20:00,577 INFO 127.0.0.1 - - [09/Dec/2024 00:20:00] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:20:01,284 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:20:01,287 INFO 127.0.0.1 - - [09/Dec/2024 00:20:01] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:42:45,951 INFO Performed similarity search with query: ['a\x1b[C']
+2024-12-09 00:42:45,951 INFO Results: ['']
+2024-12-09 00:42:45,951 INFO 127.0.0.1 - - [09/Dec/2024 00:42:45] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:42:52,013 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:42:52,015 INFO 127.0.0.1 - - [09/Dec/2024 00:42:52] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:43:32,135 INFO Performed similarity search with query: ['a']
+2024-12-09 00:43:32,135 INFO Results: ['']
+2024-12-09 00:43:32,136 INFO 127.0.0.1 - - [09/Dec/2024 00:43:32] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:43:33,417 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:43:33,420 INFO 127.0.0.1 - - [09/Dec/2024 00:43:33] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:44:19,174 INFO Performed similarity search with query: ['a']
+2024-12-09 00:44:19,174 INFO Results: ['']
+2024-12-09 00:44:19,174 INFO 127.0.0.1 - - [09/Dec/2024 00:44:19] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:44:32,265 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:44:32,268 INFO 127.0.0.1 - - [09/Dec/2024 00:44:32] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:44:32,865 INFO Performed similarity search with query: ['']
+2024-12-09 00:44:32,865 INFO Results: ['']
+2024-12-09 00:44:32,865 INFO 127.0.0.1 - - [09/Dec/2024 00:44:32] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:44:34,327 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:44:34,329 INFO 127.0.0.1 - - [09/Dec/2024 00:44:34] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:45:14,718 INFO Performed similarity search with query: ['a']
+2024-12-09 00:45:14,718 INFO Results: ['']
+2024-12-09 00:45:14,719 INFO 127.0.0.1 - - [09/Dec/2024 00:45:14] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:45:15,783 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:45:15,789 INFO 127.0.0.1 - - [09/Dec/2024 00:45:15] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:46:42,274 INFO Performed similarity search with query: ['a']
+2024-12-09 00:46:42,274 INFO Results: ['']
+2024-12-09 00:46:42,275 INFO 127.0.0.1 - - [09/Dec/2024 00:46:42] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:46:44,415 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:46:44,418 INFO 127.0.0.1 - - [09/Dec/2024 00:46:44] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:59:41,232 INFO Performed similarity search with query: ['aoo']
+2024-12-09 00:59:41,232 INFO Results: ['']
+2024-12-09 00:59:41,232 INFO 127.0.0.1 - - [09/Dec/2024 00:59:41] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:59:42,066 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:59:42,073 INFO 127.0.0.1 - - [09/Dec/2024 00:59:42] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 00:59:42,142 INFO Performed similarity search with query: ['aoo']
+2024-12-09 00:59:42,142 INFO Results: ['']
+2024-12-09 00:59:42,142 INFO 127.0.0.1 - - [09/Dec/2024 00:59:42] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 00:59:42,680 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 00:59:42,686 INFO 127.0.0.1 - - [09/Dec/2024 00:59:42] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:00:24,801 INFO Performed similarity search with query: ['s']
+2024-12-09 01:00:24,801 INFO Results: ['']
+2024-12-09 01:00:24,802 INFO 127.0.0.1 - - [09/Dec/2024 01:00:24] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:00:25,986 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:00:25,990 INFO 127.0.0.1 - - [09/Dec/2024 01:00:25] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:01:20,196 INFO Performed similarity search with query: ['a']
+2024-12-09 01:01:20,196 INFO Results: ['']
+2024-12-09 01:01:20,196 INFO 127.0.0.1 - - [09/Dec/2024 01:01:20] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:01:21,140 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:01:21,148 INFO 127.0.0.1 - - [09/Dec/2024 01:01:21] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:01:21,197 INFO Performed similarity search with query: ['a']
+2024-12-09 01:01:21,197 INFO Results: ['']
+2024-12-09 01:01:21,198 INFO 127.0.0.1 - - [09/Dec/2024 01:01:21] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:01:22,008 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:01:22,015 INFO 127.0.0.1 - - [09/Dec/2024 01:01:22] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:01:46,604 INFO Performed similarity search with query: ['a']
+2024-12-09 01:01:46,604 INFO Results: ['']
+2024-12-09 01:01:46,604 INFO 127.0.0.1 - - [09/Dec/2024 01:01:46] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:01:47,713 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:01:47,720 INFO 127.0.0.1 - - [09/Dec/2024 01:01:47] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:02:09,370 INFO Performed similarity search with query: ['a']
+2024-12-09 01:02:09,370 INFO Results: ['']
+2024-12-09 01:02:09,370 INFO 127.0.0.1 - - [09/Dec/2024 01:02:09] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:02:10,478 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:02:10,480 INFO 127.0.0.1 - - [09/Dec/2024 01:02:10] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:02:27,106 INFO Performed similarity search with query: ['1']
+2024-12-09 01:02:27,106 INFO Results: ['']
+2024-12-09 01:02:27,106 INFO 127.0.0.1 - - [09/Dec/2024 01:02:27] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:02:28,848 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:02:28,852 INFO 127.0.0.1 - - [09/Dec/2024 01:02:28] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:05:56,039 INFO Performed similarity search with query: ['a']
+2024-12-09 01:05:56,039 INFO Results: ['']
+2024-12-09 01:05:56,039 INFO 127.0.0.1 - - [09/Dec/2024 01:05:56] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:05:56,954 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:05:56,957 INFO 127.0.0.1 - - [09/Dec/2024 01:05:56] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 01:05:56,984 INFO Performed similarity search with query: ['a']
+2024-12-09 01:05:56,984 INFO Results: ['']
+2024-12-09 01:05:56,984 INFO 127.0.0.1 - - [09/Dec/2024 01:05:56] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 01:05:57,957 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 01:05:58,007 INFO 127.0.0.1 - - [09/Dec/2024 01:05:58] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:08:20,162 ERROR Exception on /similarity_search [POST]
+Traceback (most recent call last):
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/src/RAG_server.py", line 83, in similarity_search
+    logging.info(f"Dimension of vectors: {vector_store.index.d}")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 641, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 513, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 265, in _embed_query
+    return self.embedding_function.embed_query(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 108, in embed_query
+    return self.embed_documents([text])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 85, in embed_documents
+    embeddings = self._client.encode(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 619, in encode
+    features = batch_to_device(features, device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/util.py", line 1067, in batch_to_device
+    batch[key] = batch[key].to(target_device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: unspecified launch failure
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+2024-12-09 12:08:20,164 INFO 127.0.0.1 - - [09/Dec/2024 12:08:20] "[35m[1mPOST /similarity_search HTTP/1.1[0m" 500 -
+2024-12-09 12:16:43,273 ERROR Exception on /similarity_search [POST]
+Traceback (most recent call last):
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/src/RAG_server.py", line 83, in similarity_search
+    logging.info(f"Dimension of vectors: {vector_store.index.d}")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 641, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 513, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 265, in _embed_query
+    return self.embedding_function.embed_query(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 108, in embed_query
+    return self.embed_documents([text])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 85, in embed_documents
+    embeddings = self._client.encode(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 619, in encode
+    features = batch_to_device(features, device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/util.py", line 1067, in batch_to_device
+    batch[key] = batch[key].to(target_device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: unspecified launch failure
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+2024-12-09 12:16:43,274 INFO 127.0.0.1 - - [09/Dec/2024 12:16:43] "[35m[1mPOST /similarity_search HTTP/1.1[0m" 500 -
+2024-12-09 12:18:57,224 ERROR Exception on /similarity_search [POST]
+Traceback (most recent call last):
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/src/RAG_server.py", line 83, in similarity_search
+    results = vector_store.similarity_search(query_embedding[0], k=4)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 641, in similarity_search
+    docs_and_scores = self.similarity_search_with_score(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 513, in similarity_search_with_score
+    embedding = self._embed_query(query)
+                ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_community/vectorstores/faiss.py", line 265, in _embed_query
+    return self.embedding_function.embed_query(text)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 108, in embed_query
+    return self.embed_documents([text])[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/langchain_huggingface/embeddings/huggingface.py", line 85, in embed_documents
+    embeddings = self._client.encode(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/SentenceTransformer.py", line 619, in encode
+    features = batch_to_device(features, device)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enrico/Scrivania/chatbot/openai_chatbot/lib/python3.12/site-packages/sentence_transformers/util.py", line 1067, in batch_to_device
+    batch[key] = batch[key].to(target_device)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: CUDA error: unspecified launch failure
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+2024-12-09 12:18:57,225 INFO 127.0.0.1 - - [09/Dec/2024 12:18:57] "[35m[1mPOST /similarity_search HTTP/1.1[0m" 500 -
+2024-12-09 12:19:22,213 INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.70:5001
+2024-12-09 12:19:22,213 INFO [33mPress CTRL+C to quit[0m
+2024-12-09 12:20:31,092 INFO Performed similarity search with query: ['a']
+2024-12-09 12:20:31,092 INFO Results: ['']
+2024-12-09 12:20:31,092 INFO 127.0.0.1 - - [09/Dec/2024 12:20:31] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:20:32,524 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:20:32,551 INFO 127.0.0.1 - - [09/Dec/2024 12:20:32] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:20:53,901 INFO Performed similarity search with query: ['ciao']
+2024-12-09 12:20:53,901 INFO Results: ['']
+2024-12-09 12:20:53,902 INFO 127.0.0.1 - - [09/Dec/2024 12:20:53] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:20:54,896 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:20:54,899 INFO 127.0.0.1 - - [09/Dec/2024 12:20:54] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:23:41,092 INFO Performed similarity search with query: ['ciao']
+2024-12-09 12:23:41,092 INFO Results: ['']
+2024-12-09 12:23:41,092 INFO 127.0.0.1 - - [09/Dec/2024 12:23:41] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:23:41,906 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:23:41,912 INFO 127.0.0.1 - - [09/Dec/2024 12:23:41] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:25:46,069 INFO Performed similarity search with query: ['sono enrico']
+2024-12-09 12:25:46,069 INFO Results: ['']
+2024-12-09 12:25:46,069 INFO 127.0.0.1 - - [09/Dec/2024 12:25:46] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:25:46,981 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:25:46,985 INFO 127.0.0.1 - - [09/Dec/2024 12:25:46] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:25:49,357 INFO Performed similarity search with query: ['come mi chiamo']
+2024-12-09 12:25:49,357 INFO Results: ['']
+2024-12-09 12:25:49,358 INFO 127.0.0.1 - - [09/Dec/2024 12:25:49] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:25:50,540 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:25:50,545 INFO 127.0.0.1 - - [09/Dec/2024 12:25:50] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:28:39,951 INFO Performed similarity search with query: ['ciao']
+2024-12-09 12:28:39,951 INFO Results: ['']
+2024-12-09 12:28:39,952 INFO 127.0.0.1 - - [09/Dec/2024 12:28:39] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:28:40,889 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:28:40,891 INFO 127.0.0.1 - - [09/Dec/2024 12:28:40] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:28:42,933 INFO Performed similarity search with query: ['sono enrico']
+2024-12-09 12:28:42,933 INFO Results: ['']
+2024-12-09 12:28:42,934 INFO 127.0.0.1 - - [09/Dec/2024 12:28:42] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:28:43,709 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:28:43,711 INFO 127.0.0.1 - - [09/Dec/2024 12:28:43] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:28:46,346 INFO Performed similarity search with query: ['come mi chiamo']
+2024-12-09 12:28:46,346 INFO Results: ['']
+2024-12-09 12:28:46,347 INFO 127.0.0.1 - - [09/Dec/2024 12:28:46] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:28:47,565 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:28:47,567 INFO 127.0.0.1 - - [09/Dec/2024 12:28:47] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:32:00,061 INFO Performed similarity search with query: ['enrico']
+2024-12-09 12:32:00,061 INFO Results: ['']
+2024-12-09 12:32:00,062 INFO 127.0.0.1 - - [09/Dec/2024 12:32:00] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:32:01,202 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:32:01,211 INFO 127.0.0.1 - - [09/Dec/2024 12:32:01] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:32:07,728 INFO Performed similarity search with query: ['come mi chiamo']
+2024-12-09 12:32:07,728 INFO Results: ['']
+2024-12-09 12:32:07,729 INFO 127.0.0.1 - - [09/Dec/2024 12:32:07] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:32:08,587 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:32:08,589 INFO 127.0.0.1 - - [09/Dec/2024 12:32:08] "POST /invoke HTTP/1.1" 200 -
+2024-12-09 12:32:27,873 INFO Performed similarity search with query: ['come posso modificare la tua configurazione per permetterti di ricordare la chat']
+2024-12-09 12:32:27,874 INFO Results: ['']
+2024-12-09 12:32:27,874 INFO 127.0.0.1 - - [09/Dec/2024 12:32:27] "POST /similarity_search HTTP/1.1" 200 -
+2024-12-09 12:32:32,679 INFO HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2024-12-09 12:32:32,683 INFO 127.0.0.1 - - [09/Dec/2024 12:32:32] "POST /invoke HTTP/1.1" 200 -

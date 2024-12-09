@@ -1,39 +1,40 @@
 import requests
-import os
-
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["LANGCHAIN_TRACING_V2"] = "false"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
-
 from langchain_core.documents import Document
-from langchain import hub
 from langgraph.graph import START, StateGraph
 from typing_extensions import List, TypedDict
 from langchain_core.documents import Document
 from langgraph.checkpoint.memory import MemorySaver
+from langchain_core.messages import AIMessage
+import os
 
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
+
+# Definizione del tipo di dato State utilizzando TypedDict
 class State(TypedDict):
     question: str
     context: List[Document]
     answer: str
 
+# Funzione per recuperare documenti simili dal database vettoriale
 def retrieve(state: State):
-    # Cerca nel database vettoriale utilizzando query risultati ottimi
+    # Invia una richiesta POST al server per effettuare una ricerca di similarità
     response = requests.post('http://localhost:5001/similarity_search', json={"query": [state["question"]]})
+    # Ottieni i documenti recuperati dalla risposta del server
     retrieved_docs = response.json()["results"]
+    # Restituisci i documenti come contesto
     return {"context": [Document(page_content=doc) for doc in retrieved_docs]}
 
+# Funzione per generare una risposta utilizzando i documenti recuperati
 def generate(state: State):
-    # Combine retrieved document content into a single string
+    # Combina il contenuto dei documenti recuperati in una singola stringa
     docs_content = "\n\n".join(doc.page_content for doc in state["context"])
     
-    # Create the message structure for the LLM
+    # Crea la struttura dei messaggi per il modello di linguaggio
     messages = [
         {
             "role": "system",
             "content": (
-                "You are a helpful assistant specialized in embedded systems. Provide detailed, thorough, and "
+                "You are a helpful assistant specialized in llm systems. Provide detailed, thorough, and "
                 "well-structured answers in Italian, including examples, explanations, and step-by-step guidance."
             )
         },
@@ -47,16 +48,17 @@ def generate(state: State):
         }
     ]
 
-    # Send the messages to the /invoke endpoint of the LLM server
-    response = requests.post('http://localhost:5003/invoke', json={"messages": messages})
+    # Invia i messaggi all'endpoint /invoke del server LLM
+    response = requests.post('http://localhost:5001/invoke', json={"messages": messages})
     
-    # Return the assistant's response
+    # Restituisci la risposta dell'assistente
     return {"answer": response.json().get("response", "No response from server.")}
 
-
+# Funzione principale
 def main():
-
+    # Crea un grafo di stato e aggiungi le funzioni retrieve e generate come sequenza
     graph_builder = StateGraph(State).add_sequence([retrieve, generate])
+    # Aggiungi un bordo dal nodo di inizio alla funzione retrieve
     graph_builder.add_edge(START, "retrieve")
 
     # Add memory
@@ -70,8 +72,10 @@ def main():
         if user_input.lower() in ["exit", "quit"]:
             print("Exiting chat...")
             break
-        response = graph.invoke({"question": user_input}, config)
+        # Modalita normale output
+        response = graph.invoke({"question": user_input}, config=config)
         print(f"AI: {response['answer']}")
+       
 
 if __name__ == "__main__":
     main()
