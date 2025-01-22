@@ -20,11 +20,11 @@ class State(TypedDict):
     document_context: List[Document]
 
 # Inizializza il LLM
-llm = ChatOpenAI(model="gpt-4o-mini", max_tokens=300, temperature=0.6)
+llm = ChatOpenAI(model="gpt-4o-mini", max_tokens=2000, temperature=0.6)
 
 # Configura il trimmer
 trimmer = trim_messages(
-    max_tokens=100,
+    max_tokens=1000,
     strategy="last",
     token_counter=llm,
     include_system=True,
@@ -64,7 +64,7 @@ def generate(state: State):
     # Combina i messaggi esistenti
     try:
         previous_messages = trimmer.invoke(state["messages"])
-        print("Trimmed messages:", previous_messages)
+        # print("Trimmed messages:", previous_messages)
     except Exception as e:
         print(f"Errore durante il trimming dei messaggi: {e}")
         return state
@@ -73,8 +73,9 @@ def generate(state: State):
     document_context = "\n\n".join(doc.page_content for doc in state["document_context"])
 
     # Crea la risposta dell'assistente basata sui contesti
-    new_messages = [
-        {"role": "system", "content": "Sei un assistente utile. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano, in modo conciso e puntuale."},
+    new_messages = [    
+        #"Sei un assistente utile. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano, in modo conciso e puntuale." 
+        {"role": "system", "content": "Sei uno studente di Ingegneria del Software Semplice. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano basandoti sul contesto fornito."},
         *[
             {"role": "user" if isinstance(msg, HumanMessage) else "assistant", "content": msg.content}
             for msg in previous_messages
@@ -122,7 +123,7 @@ def main():
         # Invoca il grafo
         try:
             output = graph.invoke(initial_state, config)
-            print("\033[94mAssistente:\033[0m", output["messages"][-1].content + "\n")
+            print("\033[94mDon_Salva:\033[0m", output["messages"][-1].content + "\n")
         except Exception as e:
             print(f"Errore durante l'esecuzione del grafo: {e}")
 

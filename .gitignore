@@ -1,3 +1,5 @@
 openai_chatbot/
 .env
 0.2.27
+text.txt
+data/*

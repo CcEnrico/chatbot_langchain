@@ -10,13 +10,28 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # Liste di file di testo e PDF
 text_paths = [
-    "data/bibbia.txt"
+    # "data/bibbia.txt"
     ]
 
 pdf_paths = [
-    "data/lezionario.pdf", 
-    "data/messale.pdf",
-    "data/ccc.pdf",
+    # "data/lezionario.pdf", 
+    # "data/messale.pdf",
+    # "data/ccc.pdf"
+    # "data/Incontro 1 - Sabato 23_11_24.pdf",
+    # "data/Incontro 2 - Sabato 30-11-24.pdf",
+    # "data/Incontro 3 - Sabato 07_12_24.pdf",
+    # "data/Incontro 4 - Sabato 14_12_24.pdf",
+    # "data/Incontro 5 - Sabato 21_12_24.pdf",
+    # "data/Incontro 6 - Sabato 28_12_24.pdf",
+    # "data/Incontro 7 - Martedì 07_01_25.pdf",
+    # "data/INFORMAZIONI E CONTATTI.pdf",
+    # "data/PRESENTAZIONE.pdf",
+    "data/Ingegneria del software semplice (per davvero).pdf",
+    # "data/Tutti i Quiz (Teoria e Pratica)_al 2023.pdf",
+    # "data/Quiz_Teoria_Pratica.pdf"
+    "data/Raccolta risposte Teoria (2023).pdf",
+    "data/Domande di teoria (2016).pdf",
+    "data/SWE-Domande&Risposte (2018).pdf"
     ]
 
 # Caricare i documenti di testo
@@ -36,8 +51,8 @@ docs = text_documents + pdf_documents
 print(f"Loaded {len(docs)} chunks of text")
 
 # Configurare il text splitter
-chunk_size = 700
-chunk_overlap = 50
+chunk_size = 3000
+chunk_overlap = 300
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
 
 # Suddividere i documenti

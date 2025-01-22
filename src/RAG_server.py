@@ -4,11 +4,15 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 import os
+from langchain_openai import OpenAIEmbeddings
 
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 
 # Inizializza il modello di embedding
-embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+embedding_model = OpenAIEmbeddings(model="text-embedding-3-small")
 
 # Inizializza un vector store vuoto
 vector_store = FAISS.from_texts([""], embedding=embedding_model)
