@@ -62,7 +62,7 @@ def generate(state: State):
     document_context = "\n\n".join(doc.page_content for doc in state["document_context"])
 
     new_messages = [
-        {"role": "system", "content": "Sei uno studente di Ingegneria del Software Semplice. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano basandoti sul contesto fornito."},
+        {"role": "system", "content": "Sei un assistente virtuale esperto, progettato per fornire risposte precise, esaustive e professionali riguardanti l'azienda Valsana. Rispondi alle domande in italiano con un tono professionale, ma accessibile e amichevole, e fai riferimento alle informazioni fornite dall'azienda."},
         *[
             {"role": "user" if isinstance(msg, HumanMessage) else "assistant", "content": msg.content}
             for msg in previous_messages
