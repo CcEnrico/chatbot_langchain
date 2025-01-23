@@ -6,10 +6,16 @@ from langchain_core.documents import Document
 import os
 from langchain_openai import OpenAIEmbeddings
 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+from dotenv import load_dotenv
 
+# Variabili d'ambiente
+# Carica le variabili d'ambiente dal file .env
+load_dotenv(dotenv_path="../.env")
+
+# os.environ["TOKENIZERS_PARALLELISM"] = os.getenv("TOKENIZERS_PARALLELISM")
+# os.environ["LANGCHAIN_TRACING_V2"] = os.getenv("LANGCHAIN_TRACING_V2")
+# os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+# os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 # Inizializza il modello di embedding
 embedding_model = OpenAIEmbeddings(model="text-embedding-3-small")

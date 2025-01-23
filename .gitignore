@@ -3,3 +3,4 @@ openai_chatbot/
 0.2.27
 text.txt
 data/*
+src/server.log

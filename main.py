@@ -1,17 +1,15 @@
-from langgraph.checkpoint.memory import MemorySaver
-from langgraph.graph import START, StateGraph
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, trim_messages
 from langchain_openai import ChatOpenAI
 from typing import List, TypedDict
 import os
 import requests
+from dotenv import load_dotenv
 
 # Variabili d'ambiente
-os.environ["TOKENIZERS_PARALLELISM"] = "false"
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
+load_dotenv()
 
 # Definisci lo Stato con cronologia dei messaggi e contesti separati
 class State(TypedDict):
@@ -24,7 +22,7 @@ llm = ChatOpenAI(model="gpt-4o-mini", max_tokens=2000, temperature=0.6)
 
 # Configura il trimmer
 trimmer = trim_messages(
-    max_tokens=1000,
+    max_tokens=200,
     strategy="last",
     token_counter=llm,
     include_system=True,
@@ -34,24 +32,19 @@ trimmer = trim_messages(
 
 # Funzione per recuperare documenti simili dal database vettoriale
 def retrieve(state: State):
-
-    # Pulisci il contesto dei documenti
     state["document_context"] = []
 
-    # Assicurati che ci sia un messaggio prima di tentare la ricerca
     if not state["messages"]:
         print("Nessun messaggio disponibile per effettuare la ricerca.")
         return state
 
-    # Invia una richiesta POST al server per effettuare una ricerca di similarità
     try:
         response = requests.post(
             'http://localhost:5001/similarity_search',
             json={"query": [state["messages"][-1].content]}
         )
-        response.raise_for_status()  # Assicurati che la richiesta abbia avuto successo
+        response.raise_for_status()
         retrieved_docs = response.json().get("results", [])
-        # Aggiorna il contesto dei documenti nello stato
         state["document_context"] = [Document(page_content=doc) for doc in retrieved_docs]
     except requests.exceptions.RequestException as e:
         print(f"Errore durante il recupero dei documenti: {e}")
@@ -60,21 +53,15 @@ def retrieve(state: State):
 
 # Funzione per generare una risposta
 def generate(state: State):
-    
-    # Combina i messaggi esistenti
     try:
         previous_messages = trimmer.invoke(state["messages"])
-        # print("Trimmed messages:", previous_messages)
     except Exception as e:
         print(f"Errore durante il trimming dei messaggi: {e}")
         return state
 
-    # Prepara il contesto generale e dei documenti
     document_context = "\n\n".join(doc.page_content for doc in state["document_context"])
 
-    # Crea la risposta dell'assistente basata sui contesti
-    new_messages = [    
-        #"Sei un assistente utile. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano, in modo conciso e puntuale." 
+    new_messages = [
         {"role": "system", "content": "Sei uno studente di Ingegneria del Software Semplice. Fornisci risposte dettagliate, approfondite e ben strutturate in italiano basandoti sul contesto fornito."},
         *[
             {"role": "user" if isinstance(msg, HumanMessage) else "assistant", "content": msg.content}
@@ -83,7 +70,6 @@ def generate(state: State):
         {"role": "system", "content": f"Contesto:\n\n{document_context}"},
     ]
 
-    # Genera la risposta del LLM
     try:
         response = llm.invoke(new_messages)
         state["messages"].append(AIMessage(content=response.content))
@@ -92,40 +78,28 @@ def generate(state: State):
     
     return state
 
-# Funzione principale
-def main():
-    
-    # Inizializza la memoria e il grafo
-    memory = MemorySaver()
-    graph_builder = StateGraph(State).add_sequence([retrieve, generate])
-    graph_builder.add_edge(START, "retrieve")
-    graph = graph_builder.compile(checkpointer=memory)
+# Configurazione dell'app Flask
+app = Flask(__name__)
+CORS(app)  # Abilita CORS per tutte le route
 
-    # Stato iniziale
-    initial_state = {
-        "messages": [],
+@app.route('/process_message', methods=['POST'])
+def process_message():
+    data = request.json
+    new_message = data['newMessage']
+    old_messages = data['oldMessages']
+
+    state = {
+        "messages": [HumanMessage(content=msg['message']) for msg in old_messages],
         "general_context": "",
         "document_context": [],
     }
 
-    # Configurazione specifica per thread
-    config = {"configurable": {"thread_id": "chat1"}}
+    state["messages"].append(HumanMessage(content=new_message))
 
-    while True:
-        user_input = input("\033[91mTu:\033[0m ")
-        if user_input.lower() in ["exit", "quit"]:
-            print("Uscita dalla chat.")
-            break
+    state = retrieve(state)
+    state = generate(state)
 
-        # Aggiungi l'input dell'utente ai messaggi
-        initial_state["messages"].append(HumanMessage(content=user_input))
+    return jsonify({"response": state["messages"][-1].content})
 
-        # Invoca il grafo
-        try:
-            output = graph.invoke(initial_state, config)
-            print("\033[94mDon_Salva:\033[0m", output["messages"][-1].content + "\n")
-        except Exception as e:
-            print(f"Errore durante l'esecuzione del grafo: {e}")
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5002)
