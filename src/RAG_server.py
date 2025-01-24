@@ -1,6 +1,5 @@
 import logging
 from flask import Flask, request, jsonify
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_core.documents import Document
 import os

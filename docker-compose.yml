@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  llm_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python LLM_server.py
+    ports:
+      - "5002:5002"
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file: 
+      - .env
+    depends_on:
+      - rag_server
+
+  rag_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python RAG_server.py
+    ports:
+      - "5001:5001"
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./database:/app/database

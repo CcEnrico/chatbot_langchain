@@ -4,12 +4,11 @@ from langchain_core.documents import Document
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage, trim_messages
 from langchain_openai import ChatOpenAI
 from typing import List, TypedDict
-import os
 import requests
 from dotenv import load_dotenv
 
 # Variabili d'ambiente
-load_dotenv()
+load_dotenv(dotenv_path="../.env")
 
 # Definisci lo Stato con cronologia dei messaggi e contesti separati
 class State(TypedDict):
@@ -39,10 +38,20 @@ def retrieve(state: State):
         return state
 
     try:
+        print([state["messages"][-1].content])
+
+        # Se sto runnando il server in locale
+        # response = requests.post(
+        #     'http://localhost:5001/similarity_search',
+        #     json={"query": [state["messages"][-1].content]}
+        # )
+
+        # Se sto runnando il server in un container
         response = requests.post(
-            'http://localhost:5001/similarity_search',
+            'http://rag_server:5001/similarity_search',
             json={"query": [state["messages"][-1].content]}
         )
+
         response.raise_for_status()
         retrieved_docs = response.json().get("results", [])
         state["document_context"] = [Document(page_content=doc) for doc in retrieved_docs]
